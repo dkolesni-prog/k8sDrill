@@ -15,11 +15,8 @@ spec:
         app: synergychat-crawler
     spec:
       containers:
-      - name: synergychat-api
+      - name: synergychat-crawler
         image: bootdotdev/synergychat-crawler:latest
-        env:
-          - name: API_PORT
-            valueFrom:
-              configMapKeyRef:
-                name: synergychat-crawler-configmap
-                key: API_PORT
+        envFrom:
+          - configMapRef:
+              name: synergychat-crawler-configmap
